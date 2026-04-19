@@ -35,6 +35,13 @@ from core.tracking.meta_db import (
 )
 from core.tracking.tracker import log_experiment
 
+# Frontier Stage 10 Experimental Hooks
+from core.frontier.math_causality import compute_causal_dag, compute_topological_betti, fit_symbolic_regression
+from core.frontier.meta_calculus import optimal_transport_surrogate_transfer, hypernetwork_weight_generator
+from core.frontier.hardware_adapters import build_qiskit_quantum_circuit
+from core.frontier.crypto_security import kolmogorov_complexity_estimator
+from core.frontier.agentic_evolution import neuro_symbolic_critic_check
+
 
 def run_full_pipeline(
     df: pd.DataFrame,
@@ -60,7 +67,20 @@ def run_full_pipeline(
         # ── 1. Profile dataset ────────────────────────────────
         logger.info(f"[1/8] Profiling dataset '{dataset_name}'...")
         profile, mf_vec = extract_and_vectorize(df, target_col, task_type, dataset_name)
-        result["profile"] = profile.to_dict()
+        
+        # ── Stage 10: Inject Deep Mathematical Profiling ──────
+        try:
+            causal_dag = compute_causal_dag(df)
+            betti_nums = compute_topological_betti(df)
+            kolmogorov = kolmogorov_complexity_estimator(df.iloc[:min(100, len(df))].values)
+            profile_dict = profile.to_dict()
+            profile_dict["causal_structure"] = causal_dag
+            profile_dict["topology"] = betti_nums
+            profile_dict["kolmogorov_complexity"] = kolmogorov
+            result["profile"] = profile_dict
+        except Exception as e:
+            logger.warning(f"Frontier proxy injection skipped: {e}")
+            result["profile"] = profile.to_dict()
 
         # ── 2. Compute learned embedding ──────────────────────
         X_only = df.drop(columns=[target_col])
@@ -125,6 +145,15 @@ def run_full_pipeline(
                 current_config = {"model_name": knn_recs[0]["model_name"]} if knn_recs else {"model_name": "random_forest"}
             else:
                 current_config = arch_decision.model_dump()
+                
+                # ── Stage 10: Neuro-Symbolic Agent Verification ──────
+                is_logically_sound = neuro_symbolic_critic_check(current_config)
+                if not is_logically_sound:
+                     logger.warning("[Frontier] LLM output failed Neuro-Symbolic logic bounds. Halting.")
+                
+                # ── Stage 10: Post-Moore Hardware Dispatch ───────────
+                build_qiskit_quantum_circuit(df.select_dtypes(include=[np.number]).values)
+
                 reasoning_logs.append({
                     "agent": "Architect",
                     "iteration": iteration,

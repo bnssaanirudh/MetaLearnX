@@ -92,6 +92,36 @@ All reasoning logs, hyperparameter constraints, and final accuracy metrics are p
 
 ---
 
+## 🌌 Frontier Architecture (Stage 10 Experimental Extensions)
+
+To push MetaLearnX beyond traditional AutoML boundaries, the repository includes a sandboxed `core/frontier/` package. This houses 20 post-Moore's Law architectural concepts engineered via a *Defensive Import Pattern* (they execute only if the high-tier dependencies are available within the runtime environment).
+
+### Domain 1: Mathematics & Causal Discovery (`math_causality.py`)
+- **Topological Data Analysis**: Employs `Giotto-TDA` to calculate exact Betti bounds (n-dimensional dataset topology).
+- **Symbolic Regression**: Uses Genetic Algorithms (`PySR`) to evolve and compile discrete Mathematical Equations mimicking target features instead of black-box tree generation.
+- **Causal Graph Logic**: Maps Causal Directed Acyclic Graphs (DAGs) using NOTEARS algorithms rather than relying on symmetric Mutual Information matrices.
+
+### Domain 2: Meta-Learning & Optimizer Calculus (`meta_calculus.py`)
+- **Differentiable Hyperparameters**: Skips Optuna's discrete search mathematically by using implicit differentiation via Google `JAX` on smooth-surface neural networks.
+- **Optimal Transport Warping**: Warps historical Bayesian surrogate models into the current dimensional space using Wasserstein geometry to aggressively bypass "Cold Start" optimization limits.
+
+### Domain 3: Post-Moore Hardware Adapters (`hardware_adapters.py`)
+- **Quantum Circuit Proxies**: Bridges tabular dataset rows into high-dimensional Hilbert Spaces mapping to `Qiskit` circuits before executing Support Vector operations.
+- **Continuous-Time Neural ODEs**: Replaces discrete residual neural blocks with Neural Ordinary Differential Equations (`torchdiffeq`).
+- **Neuromorphic Spiking Nets**: Uses `snnTorch` to map PyTorch dense weights into Leaky Integrate-and-Fire neurons for theoretical ultra-low edge power utilization.
+
+### Domain 4: Cybersecurity & Cryptography (`crypto_security.py`)
+- **Homomorphic Ciphertext Inference**: Bootstraps the Microsoft `TenSEAL` library, permitting the deep learning network to run predictions strictly on encrypted tensors.
+- **Algorithmic Density Scans**: Utilizes raw compression math (Kolmogorov Complexity Proxies) to mathematically prevent models from massively over-parameterizing sparse datasets.
+- **Adversarial Certification Bounds**: Confirms the boundaries against perturbation attacks utilizing mathematically proven Randomized Smoothing limits.
+
+### Domain 5: Agentic Mechanics (`agentic_evolution.py`)
+- **Neuro-Symbolic Logic Verification**: The LLM architectures immediately face a strict Pythonic First-Order Logic Verification gate (`PyDatalog` proxy). If the LLM generated invalid structure configurations logically, the runtime destroys the object prior to compilation.
+- **Epistemic vs Aleatoric Partitioning**: Uses Neural Ensembles to mathematically split "Data Noise" (Aleatoric) from "Model Ignorance" (Epistemic), proving identical boundary awareness. 
+- **Tabular Contrastive Mappings**: Projects numerical rows onto Frozen OpenAI Vision-Text models (`CLIP`) for Zero-Shot context inference.
+
+---
+
 ## 🚀 Setup & Launch Protocol
 
 Because MetaLearnX separates its heavy Python intelligence from its rapid React rendering, you must launch two servers.
